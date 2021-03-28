@@ -1,0 +1,4 @@
+com\jia\zuul\filter\TokenFilter.class
+com\jia\zuul\service\UserDetailServiceImpl.class
+com\jia\zuul\ZuulApplication.class
+com\jia\zuul\config\SecurityConfig.class
