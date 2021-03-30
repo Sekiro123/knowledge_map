@@ -10,8 +10,10 @@
         <module name="modeling" />
         <module name="common" />
         <module name="zuul" />
-        <module name="gateway" />
+        <module name="kg_mysql" />
+        <module name="tag" />
         <module name="user" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,7 +24,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="kg_mysql" options="-parameters" />
       <module name="modeling" options="-parameters" />
+      <module name="tag" options="-parameters" />
       <module name="user" options="-parameters" />
       <module name="zuul" options="-parameters" />
     </option>
