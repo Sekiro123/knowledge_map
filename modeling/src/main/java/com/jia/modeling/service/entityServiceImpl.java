@@ -2,7 +2,7 @@ package com.jia.modeling.service;
 
 import com.jia.modeling.dao.EntityDAO;
 import com.jia.modeling.entity.entity;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+//import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +18,8 @@ public class entityServiceImpl implements entityService{
     @Autowired
     private EntityDAO entityDAO;
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+//    @Autowired
+//    private RabbitTemplate rabbitTemplate;
 
     @Override
     public void save(entity entity) {
@@ -36,10 +36,10 @@ public class entityServiceImpl implements entityService{
             return null;
         }
     }
-    @Override
-    public void incUser(String username){
-        rabbitTemplate.convertAndSend("submitLabel","user.incUser",username);
-    }
+//    @Override
+//    public void incUser(String username){
+//        rabbitTemplate.convertAndSend("submitLabel","user.incUser",username);
+//    }
 
 //    public static void main(String[] args) {
 //        entityServiceImpl entityService = new entityServiceImpl();

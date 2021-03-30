@@ -8,10 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="modeling" />
-        <module name="zuul" />
         <module name="common" />
-        <module name="user" />
+        <module name="zuul" />
         <module name="gateway" />
+        <module name="user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

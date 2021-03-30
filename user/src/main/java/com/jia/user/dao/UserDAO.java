@@ -9,5 +9,5 @@ public interface UserDAO extends BaseDAO<User,String> {
     @Override
     User findOne(String s);
 
-    void incUser(String username);
+//    void incUser(String username);
 }

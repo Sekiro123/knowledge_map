@@ -58,10 +58,10 @@ public class EntityController {
         System.out.println("one.getProperties() = " + one.getProperties());
         return one.getProperties();
     }
-    @ApiOperation("testQueue")
-    @RequestMapping("/testQueue")
-    @ResponseBody
-    public void testQueue(){
-        entityService.incUser("ming");
-    }
+//    @ApiOperation("testQueue")
+//    @RequestMapping("/testQueue")
+//    @ResponseBody
+//    public void testQueue(){
+//        entityService.incUser("ming");
+//    }
 }
