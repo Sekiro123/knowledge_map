@@ -13,8 +13,8 @@
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/zuul/pom.xml" />
-        <option value="$PROJECT_DIR$/kg_mysql/pom.xml" />
         <option value="$PROJECT_DIR$/tag/pom.xml" />
+        <option value="$PROJECT_DIR$/neo4j/pom.xml" />
       </list>
     </option>
   </component>

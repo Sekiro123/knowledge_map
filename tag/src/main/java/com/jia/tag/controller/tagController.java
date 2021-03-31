@@ -33,7 +33,7 @@ public class tagController {
         int count=0;
         System.out.println("all insert start!");
 //        BufferedReader model = new BufferedReader(new FileReader("C:\\Users\\admin\\Desktop\\all_50_schemas_new"));
-        final BufferedReader model = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\admin\\Desktop\\all_50_schemas_new"), "GBK"));
+        final BufferedReader model = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\admin\\Desktop\\all_50_schemas_new.txt"), "UTF-8"));
         String str;
         ArrayList<model> models = new ArrayList<>();
         while((str=model.readLine())!=null){
@@ -41,7 +41,7 @@ public class tagController {
             models.add(new model(jsonObject.getString("object_type"),jsonObject.getString("predicate"),jsonObject.getString("subject_type")));
         }
 //        BufferedReader file2 = new BufferedReader(new FileReader("C:\\Users\\admin\\Desktop\\pred_out"));
-        final BufferedReader file2 = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\\\Users\\\\admin\\\\Desktop\\\\pred_out"), "GBK"));
+        final BufferedReader file2 = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\\\Users\\\\admin\\\\Desktop\\\\pred_out.txt"), "UTF-8"));
         System.out.println("models.toString() = " + models.toString());
         String tag;
         ArrayList<com.jia.tag.entity.tag> tags = new ArrayList<>();
