@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/tag")
@@ -69,5 +69,18 @@ public class tagController {
         }
 
         return "all insert!";
+    }
+    @RequestMapping("findAll")
+    @ResponseBody
+    public List<tag> findAll(){
+        return tagService.findAll();
+    }
+    @RequestMapping("updateNeo4j")
+    @ResponseBody
+    public String updateNeo4j(){
+        return tagService.updateNeo4j();
+    }
+    public void testPool(){
+        
     }
 }

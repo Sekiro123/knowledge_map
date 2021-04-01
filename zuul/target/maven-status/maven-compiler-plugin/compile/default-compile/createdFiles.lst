@@ -1,4 +1,7 @@
-com\jia\zuul\filter\TokenFilter.class
-com\jia\zuul\service\UserDetailServiceImpl.class
-com\jia\zuul\ZuulApplication.class
-com\jia\zuul\config\SecurityConfig.class
+com/jia/zuul/handler/MyAuthenticationSuccessHandler.class
+com/jia/zuul/service/UserDetailServiceImpl.class
+com/jia/zuul/controller/LoginController.class
+com/jia/zuul/config/SecurityConfig.class
+com/jia/zuul/handler/MyAccessDeniedHandler.class
+com/jia/zuul/filter/TokenFilter.class
+com/jia/zuul/ZuulApplication.class

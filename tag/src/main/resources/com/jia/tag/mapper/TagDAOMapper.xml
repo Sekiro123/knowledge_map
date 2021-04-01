@@ -3,5 +3,7 @@
     <insert id="save" parameterType="com.jia.tag.entity.tag">
         insert into tags values(#{account},#{subject},#{subject_properties},#{relation},#{object},#{object_properties})
     </insert>
-
+    <select id="findAll" resultType="com.jia.tag.entity.tag">
+        select * from tags
+    </select>
 </mapper>

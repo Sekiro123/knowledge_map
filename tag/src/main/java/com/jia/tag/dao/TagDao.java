@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface TagDao{
     public void save(tag tag);
-//    public List<tag> findAll();
+    public List<tag> findAll();
 //    public void delete();
 //    public void update();
 }

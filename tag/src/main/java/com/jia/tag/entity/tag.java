@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+
 public class tag {
     private String account;
     private String subject;

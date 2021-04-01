@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.jia.zuul.ZuulApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.757 s - in com.jia.zuul.ZuulApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.572 s - in com.jia.zuul.ZuulApplicationTests

@@ -1,4 +1,7 @@
-E:\knowledge_map\zuul\src\main\java\com\jia\zuul\service\UserDetailServiceImpl.java
-E:\knowledge_map\zuul\src\main\java\com\jia\zuul\filter\TokenFilter.java
-E:\knowledge_map\zuul\src\main\java\com\jia\zuul\ZuulApplication.java
-E:\knowledge_map\zuul\src\main\java\com\jia\zuul\config\SecurityConfig.java
+/Users/jiaxiwang/Documents/knowledge_map/zuul/src/main/java/com/jia/zuul/handler/MyAuthenticationSuccessHandler.java
+/Users/jiaxiwang/Documents/knowledge_map/zuul/src/main/java/com/jia/zuul/handler/MyAccessDeniedHandler.java
+/Users/jiaxiwang/Documents/knowledge_map/zuul/src/main/java/com/jia/zuul/ZuulApplication.java
+/Users/jiaxiwang/Documents/knowledge_map/zuul/src/main/java/com/jia/zuul/config/SecurityConfig.java
+/Users/jiaxiwang/Documents/knowledge_map/zuul/src/main/java/com/jia/zuul/controller/LoginController.java
+/Users/jiaxiwang/Documents/knowledge_map/zuul/src/main/java/com/jia/zuul/filter/TokenFilter.java
+/Users/jiaxiwang/Documents/knowledge_map/zuul/src/main/java/com/jia/zuul/service/UserDetailServiceImpl.java

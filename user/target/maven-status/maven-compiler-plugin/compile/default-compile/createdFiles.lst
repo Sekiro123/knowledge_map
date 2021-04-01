@@ -1,8 +1,7 @@
-com\jia\user\service\UserServiceImpl.class
-com\jia\user\dao\UserDAO.class
-com\jia\user\api\UserApi.class
-com\jia\user\entity\User.class
-com\jia\user\rabbitMq\Receiver.class
-com\jia\user\service\UserService.class
-com\jia\user\controller\UserController.class
-com\jia\user\UserApplication.class
+com/jia/user/api/UserApi.class
+com/jia/user/entity/User.class
+com/jia/user/controller/UserController.class
+com/jia/user/UserApplication.class
+com/jia/user/service/UserServiceImpl.class
+com/jia/user/dao/UserDAO.class
+com/jia/user/service/UserService.class
