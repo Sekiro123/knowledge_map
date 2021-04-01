@@ -1,8 +1,0 @@
-/Users/jiaxiwang/Documents/knowledge_map/user/src/main/java/com/jia/user/UserApplication.java
-/Users/jiaxiwang/Documents/knowledge_map/user/src/main/java/com/jia/user/dao/UserDAO.java
-/Users/jiaxiwang/Documents/knowledge_map/user/src/main/java/com/jia/user/entity/User.java
-/Users/jiaxiwang/Documents/knowledge_map/user/src/main/java/com/jia/user/api/UserApi.java
-/Users/jiaxiwang/Documents/knowledge_map/user/src/main/java/com/jia/user/rabbitMq/Receiver.java
-/Users/jiaxiwang/Documents/knowledge_map/user/src/main/java/com/jia/user/service/UserServiceImpl.java
-/Users/jiaxiwang/Documents/knowledge_map/user/src/main/java/com/jia/user/controller/UserController.java
-/Users/jiaxiwang/Documents/knowledge_map/user/src/main/java/com/jia/user/service/UserService.java
