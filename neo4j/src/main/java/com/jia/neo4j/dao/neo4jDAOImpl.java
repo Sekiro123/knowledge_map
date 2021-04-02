@@ -1,5 +1,7 @@
 package com.jia.neo4j.dao;
 
+import com.jia.neo4j.Utils.neo4jConnectPool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +13,13 @@ import java.util.List;
 
 @Component
 public class neo4jDAOImpl implements neo4jDAO, Serializable {
-    @Value("${neo4j.uri}")
-    private String uri;
-    @Value("${neo4j.username}")
-    private String username;
-    @Value("${neo4j.password}")
-    private String password;
+    @Autowired
+    private com.jia.neo4j.Utils.neo4jConnectPool neo4jConnectPool;
 
-
-    public Connection getNeo4jConnection(String uri, String username, String password) throws SQLException {
-        Connection conn = DriverManager.getConnection(uri,username,password);
-        return conn;
-    }
     @Override
     public List<String> findByName(String name,String type) throws SQLException {
         ArrayList<String> ans = new ArrayList<>();
-        System.out.println("uri = " + uri);
-        Connection connection = getNeo4jConnection(uri, username, password);
+        Connection connection = neo4jConnectPool.getConnection();
         Statement statement = connection.createStatement();
         System.out.println("match p=(:" + type + "{name:'" + name + "'})-[]-() return p");
         ResultSet resultSet = statement.executeQuery("match p=()-[]->(:" + type + "{name:'" + name + "'}) return p");
@@ -41,7 +33,7 @@ public class neo4jDAOImpl implements neo4jDAO, Serializable {
         while(resultSet2.next()){
             ans.add(resultSet2.getString(1));
         }
-        connection.close();
+        neo4jConnectPool.close(connection);
         return ans;
     }
 }

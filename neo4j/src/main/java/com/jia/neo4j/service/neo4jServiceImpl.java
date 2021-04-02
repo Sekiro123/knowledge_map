@@ -30,6 +30,10 @@ public class neo4jServiceImpl implements neo4jService{
     @Override
     public String findOne(String name) throws SQLException, JSONException {
 //        neo4jDAOImpl neo4jDAO = new neo4jDAOImpl();
+        if(redisUtil.hasKey("entity_"+name)){
+            System.out.println("缓存中获取"+name);
+            return redisUtil.get("entity_"+name);
+        }
         ret_type ret_type = new ret_type();
         Set<String> set = redisUtil.findSet(name);
         ArrayList<List<String>> lists = new ArrayList<>();
@@ -73,8 +77,9 @@ public class neo4jServiceImpl implements neo4jService{
         }
         ret_type.setLinks(relations);
         System.out.println("ret_type.toString() = " + ret_type.toString());
-        System.out.println("haha");
         String s = JSON.toJSONString(ret_type);
+        redisUtil.set("entity_"+name,s);
+        redisUtil.expire("entity_"+name,3600);
         return s;
     }
 }
