@@ -22,11 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .successHandler(new MyAuthenticationSuccessHandler("http://localhost:8080/user/user/test"));
+                .successHandler(new MyAuthenticationSuccessHandler("http://3580656qa1.qicp.vip/KGcloud/entity.html"));
         http.authorizeRequests()
                 .antMatchers("login.html").permitAll()
                 .antMatchers("/user/**").hasAuthority("user")
                 .antMatchers("/modeling/**").hasAuthority("user")
+                .antMatchers("/neo4j/**").hasAuthority("user")
                 .anyRequest().authenticated();
         http.exceptionHandling().accessDeniedHandler(new MyAccessDeniedHandler());
         http.csrf().disable();
