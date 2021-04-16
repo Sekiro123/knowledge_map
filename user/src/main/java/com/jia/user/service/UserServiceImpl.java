@@ -1,7 +1,7 @@
 package com.jia.user.service;
 
 import com.jia.user.dao.UserDAO;
-import com.jia.user.entity.User;
+import com.jia.common.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

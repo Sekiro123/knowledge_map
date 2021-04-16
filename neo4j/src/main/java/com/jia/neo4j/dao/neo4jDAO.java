@@ -1,7 +1,5 @@
 package com.jia.neo4j.dao;
 
-import org.neo4j.driver.v1.Driver;
-
 import java.sql.SQLException;
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.jia.modeling.controller;
 
-import com.jia.modeling.entity.entity;
+import com.jia.common.entity.entity;
 import com.jia.modeling.service.entityServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

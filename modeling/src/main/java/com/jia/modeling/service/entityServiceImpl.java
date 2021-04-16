@@ -1,7 +1,7 @@
 package com.jia.modeling.service;
 
 import com.jia.modeling.dao.EntityDAO;
-import com.jia.modeling.entity.entity;
+import com.jia.common.entity.entity;
 //import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class entityServiceImpl implements entityService{
     public entity findOne(String entity) {
         System.out.println("entity"+entity);
         try{
-            com.jia.modeling.entity.entity one = entityDAO.findOne(entity);
+            com.jia.common.entity.entity one = entityDAO.findOne(entity);
             return one;
         }catch(NullPointerException e){
             return null;

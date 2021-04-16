@@ -1,7 +1,7 @@
 package com.jia.modeling.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.jia.modeling.entity.relation;
+import com.jia.common.entity.relation;
 import com.jia.modeling.service.relationService;
 import com.jia.modeling.service.relationServiceImpl;
 import io.swagger.annotations.Api;

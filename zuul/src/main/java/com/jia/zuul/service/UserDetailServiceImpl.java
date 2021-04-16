@@ -1,6 +1,6 @@
 package com.jia.zuul.service;
 
-import com.jia.user.api.UserApi;
+import com.jia.zuul.feign.UserFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -15,10 +15,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Autowired
     public PasswordEncoder passwordEncoder;
     @Autowired
-    private UserApi userApi;
+    private UserFeign userFeign;
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        com.jia.user.entity.User user = userApi.findOne(s);
+        com.jia.common.entity.User user = userFeign.findOne(s);
         System.out.println(user.toString());
         return new User(user.getAccount(),user.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList(user.getAuthorities()));
     }

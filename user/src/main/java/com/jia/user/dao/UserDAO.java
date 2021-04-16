@@ -1,13 +1,12 @@
 package com.jia.user.dao;
 
-import com.jia.modeling.dao.BaseDAO;
-import com.jia.user.entity.User;
+import com.jia.common.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface UserDAO extends BaseDAO<User,String> {
-    @Override
+public interface UserDAO {
     User findOne(String s);
+    void save(User user);
 
 //    void incUser(String username);
 }

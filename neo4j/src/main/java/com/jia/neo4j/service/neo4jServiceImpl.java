@@ -2,7 +2,7 @@ package com.jia.neo4j.service;
 
 import com.alibaba.fastjson.JSON;
 import com.jia.neo4j.dao.RedisUtil;
-import com.jia.neo4j.dao.neo4jDAO;
+import com.jia.neo4j.dao.neo4jDAOImpl;
 import com.jia.neo4j.entity.node;
 import com.jia.neo4j.entity.node_index;
 import com.jia.neo4j.entity.relation;
@@ -10,7 +10,6 @@ import com.jia.neo4j.entity.ret_type;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.jia.neo4j.dao.neo4jDAOImpl;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -77,6 +76,7 @@ public class neo4jServiceImpl implements neo4jService{
         }
         ret_type.setLinks(relations);
         System.out.println("ret_type.toString() = " + ret_type.toString());
+
         String s = JSON.toJSONString(ret_type);
         redisUtil.set("entity_"+name,s);
         redisUtil.expire("entity_"+name,3600);

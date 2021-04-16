@@ -1,7 +1,5 @@
 package com.jia.zuul.config;
 
-import com.jia.user.api.UserApi;
-import com.jia.user.entity.User;
 import com.jia.zuul.handler.MyAccessDeniedHandler;
 import com.jia.zuul.handler.MyAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import sun.security.util.Password;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {

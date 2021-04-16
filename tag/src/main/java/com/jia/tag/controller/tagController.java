@@ -27,6 +27,9 @@ public class tagController {
         tagService.save(tag);
         return "saved!";
     }
+    @RequestMapping("insert")
+    @ResponseBody
+    public String insert(){return null;}
     @RequestMapping("all-insert")
     @ResponseBody
     public String all_insert() throws IOException, JSONException {

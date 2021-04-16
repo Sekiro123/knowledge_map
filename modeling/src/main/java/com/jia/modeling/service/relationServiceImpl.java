@@ -1,8 +1,8 @@
 package com.jia.modeling.service;
 
 import com.jia.modeling.dao.RelationDAO;
-import com.jia.modeling.entity.entity;
-import com.jia.modeling.entity.relation;
+import com.jia.common.entity.entity;
+import com.jia.common.entity.relation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

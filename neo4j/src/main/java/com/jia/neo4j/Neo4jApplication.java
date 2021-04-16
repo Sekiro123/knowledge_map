@@ -12,7 +12,10 @@ public class Neo4jApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(Neo4jApplication.class, args);
-        HashMap<Integer,Integer> map=new HashMap<>();
+        System.out.println("hahaha");
+        System.out.println("${common.test}");
+        System.out.println("${neo4j.min_connections}");
+
     }
 
 }

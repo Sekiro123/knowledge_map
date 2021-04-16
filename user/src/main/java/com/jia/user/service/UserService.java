@@ -1,6 +1,6 @@
 package com.jia.user.service;
 
-import com.jia.user.entity.User;
+import com.jia.common.entity.User;
 
 public interface UserService {
     public String regist(User user);

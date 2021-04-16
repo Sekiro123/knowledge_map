@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @SpringBootApplication
 @EnableZuulProxy
 @EnableWebSecurity
-@EnableFeignClients(value = {"com.jia.user"})
+@EnableFeignClients(value = {"com.jia.zuul"})
 public class ZuulApplication {
 
     public static void main(String[] args) {

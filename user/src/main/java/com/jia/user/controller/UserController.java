@@ -1,12 +1,10 @@
 package com.jia.user.controller;
 
-import com.jia.user.api.UserApi;
-import com.jia.user.entity.User;
+import com.jia.common.entity.User;
 import com.jia.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 @Api("User Controller")
 @Controller
@@ -28,8 +25,7 @@ public class UserController {
     }
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private UserApi userApi;
+
     @Autowired
     private UserService userService;
     @ApiOperation("User regist")
@@ -65,6 +61,5 @@ public class UserController {
     @ResponseBody
     public void test(){
         System.out.println("test function!");
-        System.out.println("userApi.findOne( ) = " + userApi.findOne("xiaojia"));
     }
 }

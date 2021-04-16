@@ -1,6 +1,6 @@
 package com.jia.modeling.dao;
 
-import com.jia.modeling.entity.entity;
+import com.jia.common.entity.entity;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
