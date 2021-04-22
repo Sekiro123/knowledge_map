@@ -39,6 +39,10 @@ public class UserController {
         String ret = userService.regist(user);
         return ret;
     }
+    @RequestMapping("/test2")
+    public void test2(@RequestParam User user){
+        System.out.println(user.toString());
+    }
     @ApiOperation("user login")
     @RequestMapping("login")
     @ResponseBody

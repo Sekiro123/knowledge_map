@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,4 +20,6 @@ public class tag {
     private String relation;
     private String object;
     private String object_properties;
+    private String text;
+    private Date time;
 }

@@ -50,14 +50,18 @@ public class neo4jServiceImpl implements neo4jService{
                     split[k]=split[k]+"}";
                 }
                 JSONObject temp = new JSONObject(split[0]);
-                String label1 = temp.getString("labels").substring(2, temp.getString("labels").length() - 2);
+                System.out.println("temp.toString() = " + temp.toString());
+//                String label1 = temp.getString("labels").substring(2, temp.getString("labels").length() - 2);
+                String label1 = temp.getJSONArray("labels").toString().substring(2, temp.getJSONArray("labels").toString().length() - 2);
                 String name1 = temp.getString("name");
                 if(!category.contains(label1)){
                     category.add(label1);
                 }
                 nodes.put(name1,category.indexOf(label1));
                 temp = new JSONObject(split[2]);
-                String label2 = temp.getString("labels").substring(2, temp.getString("labels").length() - 2);
+//                String label2 = temp.getString("labels").substring(2, temp.getString("labels").length() - 2);
+                String label2 = temp.getJSONArray("labels").toString().substring(2, temp.getJSONArray("labels").toString().length() - 2);
+
                 String name2 = temp.getString("name");
                 if(!category.contains(label2)){
                     category.add(label2);
