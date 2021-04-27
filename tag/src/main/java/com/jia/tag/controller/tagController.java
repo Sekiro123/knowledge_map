@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/tag")
+//@RequestMapping("/tag")
 public class tagController {
     @Autowired
     private tagServiceImpl tagService;

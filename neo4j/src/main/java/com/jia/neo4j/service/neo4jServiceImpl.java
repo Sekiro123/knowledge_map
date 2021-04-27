@@ -1,6 +1,7 @@
 package com.jia.neo4j.service;
 
 import com.alibaba.fastjson.JSON;
+import com.jia.common.entity.log;
 import com.jia.neo4j.dao.RedisUtil;
 import com.jia.neo4j.dao.neo4jDAOImpl;
 import com.jia.neo4j.entity.node;
@@ -12,6 +13,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +30,7 @@ public class neo4jServiceImpl implements neo4jService{
     private RedisUtil redisUtil;
 
     @Override
-    public String findOne(String name) throws SQLException, JSONException {
+    public String findOne(String name, HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
 //        neo4jDAOImpl neo4jDAO = new neo4jDAOImpl();
         if(redisUtil.hasKey("entity_"+name)){
             System.out.println("缓存中获取"+name);

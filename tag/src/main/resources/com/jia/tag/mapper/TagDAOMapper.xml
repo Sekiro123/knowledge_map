@@ -6,4 +6,5 @@
     <select id="findAll" resultType="com.jia.tag.entity.tag">
         select * from tags
     </select>
+
 </mapper>

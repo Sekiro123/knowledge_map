@@ -21,6 +21,7 @@
         <module>neo4j</module>
         <module>tag</module>
         <module>common</module>
+        <module>logs</module>
         <!--        <module>gateway</module>-->
     </modules>
 </project>

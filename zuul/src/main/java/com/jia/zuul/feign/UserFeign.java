@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@FeignClient(value = "user", path = "")
+@FeignClient(value = "user")
 public interface UserFeign {
     @RequestMapping("/findOne")
     public User findOne(@RequestBody String account);
-
+    @RequestMapping("test")
+    public String test();
 }

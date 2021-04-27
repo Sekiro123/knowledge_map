@@ -16,7 +16,7 @@ import java.io.UnsupportedEncodingException;
 
 @Api("User Controller")
 @Controller
-@RequestMapping("/user")
+//@RequestMapping("/user")
 @CrossOrigin
 public class UserController {
     @Bean
@@ -59,11 +59,17 @@ public class UserController {
     @RequestMapping("/findOne")
     @ResponseBody
     public User findOne(@RequestBody String account){
+        System.out.println("looking information for "+account);
+//        User one = userService.findOne(account);
+//        System.out.println("one.toString() = " + one.toString());
         return userService.findOne(account);
     }
     @RequestMapping("/test")
     @ResponseBody
-    public void test(){
+    public String test() throws InterruptedException {
+
         System.out.println("test function!");
+        userService.test();
+        return "testOK";
     }
 }

@@ -1,0 +1,9 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jia.logs.dao.LogDAO">
+    <select id="findByAccount" parameterType="String" resultType="com.jia.common.entity.log">
+        select * from logs where account=#{account}
+    </select>
+    <insert id="save" parameterType="com.jia.common.entity.log">
+        insert into logs values(null,#{account},#{time},#{operation},#{ip},#{extra_info})
+    </insert>
+</mapper>

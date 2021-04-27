@@ -2,11 +2,11 @@ package com.jia.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-
 
 public class TokenFilter extends ZuulFilter {
     @Override
@@ -36,18 +36,6 @@ public class TokenFilter extends ZuulFilter {
      */
     @Override
     public Object run() {
-        System.out.println("SecurityContextHolder.getContext().getAuthentication().getPrincipal() = " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        
-//        RequestContext currentContext = RequestContext.getCurrentContext();
-//        HttpServletRequest request = currentContext.getRequest();
-//        String token = request.getParameter("token");
-//        if (token == null) {
-//            currentContext.setSendZuulResponse(false);
-//            currentContext.setResponseBody("token is null");
-//            currentContext.setResponseStatusCode(401);
-//        }
-//        return null;
-
-    return null;
+        return null;
     }
 }

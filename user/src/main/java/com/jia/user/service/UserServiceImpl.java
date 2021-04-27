@@ -2,6 +2,7 @@ package com.jia.user.service;
 
 import com.jia.user.dao.UserDAO;
 import com.jia.common.entity.User;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService{
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
     @Autowired
     private UserDAO userDAO;
     @Override
@@ -41,6 +44,13 @@ public class UserServiceImpl implements UserService{
     }
     @Override
     public User findOne(String account){
-        return userDAO.findOne(account);
+        User one = userDAO.findOne(account);
+        System.out.println("find user info:" + one.toString());
+        return one;
+    }
+    @Override
+    public void test(){
+        System.out.println("rabbit sended!");
+        rabbitTemplate.convertAndSend("amq.direct","direct-logs","ahha");
     }
 }
