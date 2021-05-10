@@ -5,6 +5,6 @@ CREATE TABLE `logs` (
                         `time` datetime DEFAULT NULL,
                         `operation` varchar(40) DEFAULT NULL,
                         `ip` varchar(255) DEFAULT NULL,
-                        `extra_info` varchar(40) DEFAULT NULL,
+                        `extra_info` varchar(255) DEFAULT NULL,
                         INDEX(`account` )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

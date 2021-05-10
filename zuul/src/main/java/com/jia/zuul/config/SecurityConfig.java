@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.net.URL;
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    @Bean(value = "rabbitjiaxiwang")
@@ -29,14 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        http.authorizeRequests().antMatchers("/**").permitAll();
+        URL failure = new URL("https://www.baidu.com");
         http.formLogin()
-//                .loginPage("http://3580656qa1.qicp.vip/KGcloud/login.html")
-//                .loginProcessingUrl("/login")
+                .loginPage("http://3580656qa1.qicp.vip/KGcloud/login.html")
+                .loginProcessingUrl("/login")
                 .successHandler(new MyAuthenticationSuccessHandler("http://3580656qa1.qicp.vip/KGcloud/entity.html"));
         http.authorizeRequests()
-                .antMatchers("/login_files/**").permitAll()
-                .antMatchers("/login1.html").permitAll()
-//                .antMatchers("/login").permitAll()
                 .antMatchers("/user/**").hasAuthority("user")
                 .antMatchers("/modeling/**").hasAuthority("user")
                 .antMatchers("/neo4j/**").hasAuthority("user")

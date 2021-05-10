@@ -37,9 +37,12 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         log log = new log(httpServletRequest.getParameter("username"), new Date(), "login", remoteAddr, "success");
         String s = new Gson().toJson(log);
         rabbitTemplate.convertAndSend("amq.direct","direct-logs",s);
-
+//        httpServletResponse.set
         System.out.println("jia");
         System.out.println("user.getAuthorities() = " + user.getAuthorities());
 //        httpServletResponse.sendRedirect(url);
+        httpServletResponse.getWriter().print("success");
+        httpServletResponse.setContentType("text/html;charset=utf-8");
+        System.out.println("login success");
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication
@@ -19,7 +20,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 public class ZuulApplication {
 
     public static void main(String[] args) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        System.out.println("bCryptPasswordEncoder.encode(\"123456\") = " + bCryptPasswordEncoder.encode("123456"));
+
         SpringApplication.run(ZuulApplication.class, args);
+
+
     }
 
 

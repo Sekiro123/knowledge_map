@@ -1,0 +1,19 @@
+mysql:
+docker pull mysql:5.6
+//然后把配置文件放在/kg/mysql/conf文件夹中。
+docker run --name mysql -v /kg/mysql/conf/mysql.cnf:/etc/mysql/conf.d/mysql.cnf -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
+redis:
+docker pull redis
+docker run -p 6379:6379 --name redis -v /kg/redis/conf/redis.conf:/etc/redis/redis.conf -v /kg/redis/data/:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes
+nacos:
+docker run -d -p 8848:8848 -e MODE=standalone -v /kg/nacos/conf/custom.properties://home/nacos/init.d/custom.properties -v /kg/nacos/logs:/home/nacos/logs --restart always --name nacos nacos/nacos-server
+rabbitmq：
+docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -v /kg/rabbitmq/data:/var/lib/rabbitmq -e RABBITMQ_DEFAULT_VHOST=my_vhost -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=123456 rabbitmq
+docker exec -it rabbitmq /bin/bash
+rabbitmq-plugins enable rabbitmq_management //开启rabbitmq的web端访问
+neo4j:
+docker pull neo4j:3.5.5
+未知原因，挂载配置文件的时候总是报错配置文件找不到，所以选择不挂载配置文件了，需要改配置文件的话启动docker之后在idea里改。配置文件的坐标为/var/lib/neo4j/conf
+docker run -d --name neo4j -p 7474:7474 -p 7687:7687 -v /kg/neo4j/data:/data -v /kg/neo4j/logs:/logs -v /kg/neo4j/import:/var/lib/neo4j/import neo4j:3.5.5
+//docker run -d --name neo4j -p 7474:7474 -p 7687:7687 -v /kg/neo4j/data:/data -v /kg/neo4j/logs:/logs -v /kg/neo4j/import:/var/lib/neo4j/import -v /kg/neo4j/conf:/var/lib/neo4j/conf neo4j:3.5.5
+

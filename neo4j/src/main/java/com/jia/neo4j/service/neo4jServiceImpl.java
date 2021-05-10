@@ -55,7 +55,8 @@ public class neo4jServiceImpl implements neo4jService{
                 JSONObject temp = new JSONObject(split[0]);
                 System.out.println("temp.toString() = " + temp.toString());
 //                String label1 = temp.getString("labels").substring(2, temp.getString("labels").length() - 2);
-                String label1 = temp.getJSONArray("labels").toString().substring(2, temp.getJSONArray("labels").toString().length() - 2);
+//                String label1 = temp.getJSONArray("labels").toString().substring(2, temp.getJSONArray("labels").toString().length() - 2);
+                String label1=temp.getString("type");
                 String name1 = temp.getString("name");
                 if(!category.contains(label1)){
                     category.add(label1);
@@ -63,15 +64,15 @@ public class neo4jServiceImpl implements neo4jService{
                 nodes.put(name1,category.indexOf(label1));
                 temp = new JSONObject(split[2]);
 //                String label2 = temp.getString("labels").substring(2, temp.getString("labels").length() - 2);
-                String label2 = temp.getJSONArray("labels").toString().substring(2, temp.getJSONArray("labels").toString().length() - 2);
-
+//                String label2 = temp.getJSONArray("labels").toString().substring(2, temp.getJSONArray("labels").toString().length() - 2);
+                String label2=temp.getString("type");
                 String name2 = temp.getString("name");
                 if(!category.contains(label2)){
                     category.add(label2);
                 }
                 nodes.put(name2,category.indexOf(label2));
                 temp = new JSONObject(split[1]);
-                String r = temp.getString("type");
+                String r = temp.getString("relation_name");
                 relations.add(new relation(name1,name2,r));
             }
         }

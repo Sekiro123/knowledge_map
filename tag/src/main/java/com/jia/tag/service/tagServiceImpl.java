@@ -31,6 +31,11 @@ public class tagServiceImpl implements tagService{
     public List<tag> findAll() {
         return tagDao.findAll();
     }
+    public void insertOneRelation(tag tag)
+    {
+
+
+    }
     public String updateNeo4j(){
         List<tag> all = tagDao.findAll();
         Driver driver = GraphDatabase.driver("bolt://192.168.31.65:7687", AuthTokens.basic("neo4j", "123456"));
@@ -45,14 +50,21 @@ public class tagServiceImpl implements tagService{
 
 //            System.out.println("tag = " + tag);
 //            System.out.println(redisUtil.findSet(tag.getSubject()));
-            session.run("merge(:"+tag.getSubject_properties()+"{name:'"+tag.getSubject()+"'})");
+            session.run("merge(:"+tag.getSubject_properties()+"{name:'"+tag.getSubject()+"',type:'"+tag.getSubject_properties()+"'})");
             redisUtil.addSet(tag.getSubject(),tag.getSubject_properties());
-            session.run("merge(:"+tag.getObject_properties()+"{name:'"+tag.getObject()+"'})");
+            session.run("merge(:"+tag.getObject_properties()+"{name:'"+tag.getObject()+"',type:'"+tag.getObject_properties()+"'})");
+            System.out.println("\"merge(:\"+tag.getObject_properties()+\"{name:'\"+tag.getObject()+\"',type:'\"+tag.getObject_properties()+\"'})\" = " + "merge(:" + tag.getObject_properties() + "{name:'" + tag.getObject() + "',type:'" + tag.getObject_properties() + "'})");
             redisUtil.addSet(tag.getObject(),tag.getObject_properties());
             session.run("match(a:"+tag.getSubject_properties()+"{name:'"+tag.getSubject()+"'}),(b:"+tag.getObject_properties()
-                            +"{name:'"+tag.getObject()+"'}) create (a)-[r:"+tag.getRelation()+"]->(b)");
+                    +"{name:'"+tag.getObject()+"'}) create (a)-[r:"+tag.getRelation()+"{relation_name:'"+tag.getRelation()+"'}]->(b)");
+            System.out.println("match(a:" + tag.getSubject_properties() + "{name:'" + tag.getSubject() + "'}),(b:" + tag.getObject_properties()
+                    + "{name:'" + tag.getObject() + "'}) create (a)-[r:" + tag.getRelation() + "{relation_name:'" + tag.getRelation() + "'}]->(b)");
         }
         return "success";
     }
+//    public String updateRedis(){
+//        List<tag> all = tagDao.findAll();
+//
+//    }
 
 }

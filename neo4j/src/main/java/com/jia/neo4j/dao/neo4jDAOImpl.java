@@ -21,7 +21,7 @@ public class neo4jDAOImpl implements neo4jDAO, Serializable {
         ArrayList<String> ans = new ArrayList<>();
         Connection connection = neo4jConnectPool.getConnection();
         Statement statement = connection.createStatement();
-        System.out.println("match p=(:" + type + "{name:'" + name + "'})-[]-() return p");
+        System.out.println("match p=()-[]->(:" + type + "{name:'" + name + "'}) return p");
         ResultSet resultSet = statement.executeQuery("match p=()-[]->(:" + type + "{name:'" + name + "'}) return p");
         ResultSet resultSet2 = statement.executeQuery("match p=(:" + type + "{name:'" + name + "'})-[]->() return p");
         System.out.println("resultSet.toString() = " + resultSet.toString());

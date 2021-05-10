@@ -46,6 +46,7 @@ public class tagController {
             tagService.save(tag);
         }
         response.setHeader("Access-Control-Allow-Origin", "*");
+
 //        tagService.save(tag);
         return "saved!";
     }
@@ -55,7 +56,7 @@ public class tagController {
         int count=0;
         System.out.println("all insert start!");
 //        BufferedReader model = new BufferedReader(new FileReader("C:\\Users\\admin\\Desktop\\all_50_schemas_new"));
-        final BufferedReader model = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\admin\\Desktop\\all_50_schemas_new.txt"), "UTF-8"));
+        final BufferedReader model = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/jiaxiwang/Downloads/all_50_schemas_new.txt"), "UTF-8"));
         String str;
         ArrayList<model> models = new ArrayList<>();
         while((str=model.readLine())!=null){
@@ -63,7 +64,7 @@ public class tagController {
             models.add(new model(jsonObject.getString("object_type"),jsonObject.getString("predicate"),jsonObject.getString("subject_type")));
         }
 //        BufferedReader file2 = new BufferedReader(new FileReader("C:\\Users\\admin\\Desktop\\pred_out"));
-        final BufferedReader file2 = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\\\Users\\\\admin\\\\Desktop\\\\pred_out.txt"), "UTF-8"));
+        final BufferedReader file2 = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/jiaxiwang/Downloads/pred_out.txt"), "UTF-8"));
         System.out.println("models.toString() = " + models.toString());
         String tag;
         ArrayList<com.jia.tag.entity.tag> tags = new ArrayList<>();
@@ -79,9 +80,9 @@ public class tagController {
                     if(models.get(j).predicate.equals(predicate)){
                         subject_properties=models.get(j).subject_type;
                         object_properties=models.get(j).object_type;
-//                        com.jia.tag.entity.tag tag1 = new tag("jia", temp.getString("subject"), subject_properties,predicate, temp.getString("object"), object_properties);
+                        com.jia.tag.entity.tag tag1 = new tag("ming", temp.getString("subject"), subject_properties,predicate, temp.getString("object"), object_properties," ",new Date());
 //                        tagService.save(tag1);
-                        System.out.println(count++);
+//                        System.out.println(count++);
                         break;
                     }
 
@@ -90,7 +91,7 @@ public class tagController {
 
         }
 
-        return "all insert!";
+        return tagService.updateNeo4j();
     }
     @RequestMapping("findAll")
     @ResponseBody
