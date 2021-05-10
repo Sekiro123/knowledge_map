@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 @ToString
 @Accessors(chain=true)
 public class entity {
+    public String field;
+    public String author;
     public String entity;
     @Value("nothing")
     private String properties;

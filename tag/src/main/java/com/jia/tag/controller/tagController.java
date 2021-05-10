@@ -2,6 +2,7 @@ package com.jia.tag.controller;
 
 import com.google.gson.Gson;
 import com.jia.tag.entity.tag;
+import com.jia.tag.service.ArticleService;
 import com.jia.tag.service.tagServiceImpl;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,8 +25,11 @@ import java.util.List;
 @Controller
 //@RequestMapping("/tag")
 public class tagController {
+
     @Autowired
     private tagServiceImpl tagService;
+    @Autowired
+    private ArticleService articleService;
     @RequestMapping("insert")
     @ResponseBody
     public String save(@RequestParam(value = "result") String tags, HttpServletResponse response) throws JSONException {
@@ -105,5 +109,10 @@ public class tagController {
     }
     public void testPool(){
         
+    }
+    @RequestMapping("findOneArticle")
+    @ResponseBody
+    public String findOneArticle(String field){
+        return articleService.findOneArticle(field);
     }
 }

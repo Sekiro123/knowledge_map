@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jia.tag.dao.ArticleDao">
+    <insert id="save" parameterType="com.jia.common.entity.Article">
+        insert into articles values(#{name},#{Abstract},#{type1},#{type2},#{type3},#{type4},#{content},#{price},#{authorAccount},#{authorName},#{publishDate},#{TagTimes},#{num_read})
+    </insert>
+    <select id="findOneArticle" parameterType="String" resultType="com.jia.common.entity.Article">
+        select * from articles where type1=#{field} and TagTimes=(select min(TagTimes) from Article where type1=#{field} group by type1) limit 1
+    </select>
+    <update id="incTagTimes" parameterType="String">
+        update articles set TagTimes=TagTimes+1 where id=#{id}
+    </update>
+</mapper>

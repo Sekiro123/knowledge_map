@@ -12,6 +12,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain=true)
 @ToString
 public class relation {
+    private String field;
+    private String author;
     private String entity1;
     private String entity2;
     private String relation;

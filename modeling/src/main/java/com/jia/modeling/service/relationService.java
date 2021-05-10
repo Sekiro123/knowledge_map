@@ -5,7 +5,7 @@ import com.jia.common.entity.relation;
 
 public interface relationService {
     void save(relation relation);
-    relation findOne(String relation);
+    String findOne(String field,String author);
     Integer findTotals();
 
 }

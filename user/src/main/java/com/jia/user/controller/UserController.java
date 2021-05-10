@@ -1,5 +1,6 @@
 package com.jia.user.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.jia.common.entity.User;
 import com.jia.user.service.UserService;
 import io.swagger.annotations.Api;
@@ -71,5 +72,12 @@ public class UserController {
         System.out.println("test function!");
         userService.test();
         return "testOK";
+    }
+    @RequestMapping("findUserInfo")
+    @ResponseBody
+    public String findUserInfo(@RequestBody String account){
+        System.out.println("looking information for "+account);
+        User ans = userService.findOne(account);
+        return JSON.toJSONString(ans);
     }
 }

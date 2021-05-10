@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(new MyAuthenticationSuccessHandler("http://3580656qa1.qicp.vip/KGcloud/entity.html"));
         http.authorizeRequests()
                 .antMatchers("/user/**").hasAuthority("user")
-                .antMatchers("/modeling/**").hasAuthority("user")
+                .antMatchers("/modeling/**").hasAuthority("professor")
                 .antMatchers("/neo4j/**").hasAuthority("user")
                 .anyRequest().authenticated();
         http.addFilterAfter(new LogFilter(), UsernamePasswordAuthenticationFilter.class);

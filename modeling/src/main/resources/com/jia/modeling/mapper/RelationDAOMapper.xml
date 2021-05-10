@@ -1,6 +1,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jia.modeling.dao.RelationDAO">
-<insert id="save" parameterType="com.jia.common.entity.relation">
-    insert into relation values(#{entity1},#{entity2},#{relation})
-</insert>
+    <insert id="save" parameterType="com.jia.common.entity.relation">
+        insert into relation values(#{field},#{author},#{entity1},#{entity2},#{relation})
+    </insert>
+    <select id="findOne" resultType="com.jia.common.entity.relation">
+        select * from relation where field=#{param1} and author=#{param2}
+    </select>
+    <select id="findFields" parameterType="String" resultType="String">
+        select distinct field from relation where author = #{param1}
+    </select>
+    <delete id="delete" parameterType="com.jia.common.entity.relation">
+        delete from relation where field=#{field},author=#{author},entity1=#{entity1},entity2=#{entity2},relation=#{relation}
+    </delete>
 </mapper>

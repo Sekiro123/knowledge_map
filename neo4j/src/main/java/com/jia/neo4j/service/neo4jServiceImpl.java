@@ -31,7 +31,6 @@ public class neo4jServiceImpl implements neo4jService{
 
     @Override
     public String findOne(String name, HttpServletRequest request, HttpServletResponse response) throws SQLException, JSONException {
-//        neo4jDAOImpl neo4jDAO = new neo4jDAOImpl();
         if(redisUtil.hasKey("entity_"+name)){
             System.out.println("缓存中获取"+name);
             return redisUtil.get("entity_"+name);
@@ -54,8 +53,6 @@ public class neo4jServiceImpl implements neo4jService{
                 }
                 JSONObject temp = new JSONObject(split[0]);
                 System.out.println("temp.toString() = " + temp.toString());
-//                String label1 = temp.getString("labels").substring(2, temp.getString("labels").length() - 2);
-//                String label1 = temp.getJSONArray("labels").toString().substring(2, temp.getJSONArray("labels").toString().length() - 2);
                 String label1=temp.getString("type");
                 String name1 = temp.getString("name");
                 if(!category.contains(label1)){
@@ -63,8 +60,6 @@ public class neo4jServiceImpl implements neo4jService{
                 }
                 nodes.put(name1,category.indexOf(label1));
                 temp = new JSONObject(split[2]);
-//                String label2 = temp.getString("labels").substring(2, temp.getString("labels").length() - 2);
-//                String label2 = temp.getJSONArray("labels").toString().substring(2, temp.getJSONArray("labels").toString().length() - 2);
                 String label2=temp.getString("type");
                 String name2 = temp.getString("name");
                 if(!category.contains(label2)){
