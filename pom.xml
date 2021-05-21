@@ -22,6 +22,8 @@
         <module>tag</module>
         <module>common</module>
         <module>logs</module>
+        <module>back</module>
+        <module>renren-fast</module>
         <!--        <module>gateway</module>-->
     </modules>
 </project>

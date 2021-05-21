@@ -36,4 +36,14 @@ CREATE TABLE `articles` (
                         `num_read` Integer(30) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sentences`;
+CREATE TABLE `sentences` (
+                            `id` Integer(30) primary key Auto_Increment,
+                            `type1` varchar(255) DEFAULT '0',
+                            `type2` varchar(255) DEFAULT '0',
+                            `type3` varchar(255) DEFAULT '0',
+                            `type4` varchar(255) DEFAULT '0',
+                            `content` TEXT DEFAULT NULL,
+                            `TagTimes` Integer(20) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 SET FOREIGN_KEY_CHECKS = 1;

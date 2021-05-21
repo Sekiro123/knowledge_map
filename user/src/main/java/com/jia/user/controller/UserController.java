@@ -13,7 +13,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
+import java.util.Enumeration;
 
 @Api("User Controller")
 @Controller
@@ -75,9 +79,18 @@ public class UserController {
     }
     @RequestMapping("findUserInfo")
     @ResponseBody
-    public String findUserInfo(@RequestBody String account){
+    public String findUserInfo(@RequestParam String account){
         System.out.println("looking information for "+account);
         User ans = userService.findOne(account);
+        return JSON.toJSONString(ans);
+    }
+    @RequestMapping("findUserInfoByCookie")
+    @ResponseBody
+    public String findUserInfoByCookie(HttpServletRequest request, HttpServletResponse response){
+
+        System.out.println("request.getAttribute(\"account\") = " + request.getAttribute("account"));
+        System.out.println("request.getCookies() = " + request.getCookies());
+        User ans = userService.findOne(request.getAttribute("account").toString());
         return JSON.toJSONString(ans);
     }
 }

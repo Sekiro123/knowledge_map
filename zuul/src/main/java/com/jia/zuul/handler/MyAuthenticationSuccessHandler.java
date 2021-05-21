@@ -11,6 +11,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.jia.common.entity.log;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -43,6 +44,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 //        httpServletResponse.sendRedirect(url);
         httpServletResponse.getWriter().print("success");
         httpServletResponse.setContentType("text/html;charset=utf-8");
+        httpServletResponse.addCookie(new Cookie("account",authentication.getName()));
         System.out.println("login success");
     }
 }

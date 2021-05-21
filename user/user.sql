@@ -17,7 +17,7 @@ CREATE TABLE `user` (
                         `numUsefulTag` INTEGER (10) DEFAULT NULL,
                         INDEX(`account` )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+alter table user add numSentences int default 0;
 SET FOREIGN_KEY_CHECKS = 1;
 
 insert into `user` values('xiaoming','ming','$2a$10$nryODW38nAFko8i2fmYhlu6CjglgMO8e1shSv3MlMMkavzbZuc0Uq','15064028912','15064028912','user',0,10,10);

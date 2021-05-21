@@ -20,6 +20,7 @@ public class User {
     private Integer numArticles=0;
     private Integer numTag=0;
     private Integer numUsefulTag=0;
+    private Integer numSentences=0;
 
     public User(String name, String account, String password, String phoneNumber, String payAccount) {
         this.name = name;

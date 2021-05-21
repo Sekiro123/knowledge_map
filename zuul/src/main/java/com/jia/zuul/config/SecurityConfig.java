@@ -1,6 +1,7 @@
 package com.jia.zuul.config;
 
 import com.jia.zuul.filter.LogFilter;
+import com.jia.zuul.filter.UserFilter;
 import com.jia.zuul.handler.MyAccessDeniedHandler;
 import com.jia.zuul.handler.MyAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
@@ -41,7 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/modeling/**").hasAuthority("professor")
                 .antMatchers("/neo4j/**").hasAuthority("user")
                 .anyRequest().authenticated();
-        http.addFilterAfter(new LogFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        http.addFilterAfter(new UserFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterAfter(new LogFilter(),UserFilter.class);
         http.exceptionHandling().accessDeniedHandler(new MyAccessDeniedHandler());
         http.csrf().disable();
 

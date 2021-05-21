@@ -9,4 +9,6 @@ import java.util.List;
 public interface RelationDAO extends BaseDAO<relation,String>{
     public List<String> findFields(String author);
     public void delete(relation relation);
+    public void deleteByUserField(String author,String field);
+    public List<relation> findByField(String field);
 }

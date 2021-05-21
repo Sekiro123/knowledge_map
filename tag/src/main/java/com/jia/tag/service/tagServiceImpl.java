@@ -7,6 +7,7 @@ import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Driver;
 import org.neo4j.driver.v1.GraphDatabase;
 import org.neo4j.driver.v1.Session;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,15 +22,20 @@ public class tagServiceImpl implements tagService{
     @Autowired
     private RedisUtil redisUtil;
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @Override
     public void save(tag tag) {
         tagDao.save(tag);
+        System.out.println("send inc"+ tag.getAccount()+"'s tagNum");
+        rabbitTemplate.convertAndSend("amq.direct","incUserTagNum",tag.getAccount());
     }
 
     @Override
     public List<tag> findAll() {
         return tagDao.findAll();
+
     }
     public void insertOneRelation(tag tag)
     {

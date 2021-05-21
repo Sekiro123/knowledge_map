@@ -12,4 +12,6 @@ public interface UserFeign {
     public User findOne(@RequestBody String account);
     @RequestMapping("test")
     public String test();
+    @RequestMapping("findUserInfo")
+    public String findUserInfo(@RequestBody String account);
 }

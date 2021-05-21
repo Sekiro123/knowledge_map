@@ -10,6 +10,12 @@
         select distinct field from relation where author = #{param1}
     </select>
     <delete id="delete" parameterType="com.jia.common.entity.relation">
-        delete from relation where field=#{field},author=#{author},entity1=#{entity1},entity2=#{entity2},relation=#{relation}
+        delete from relation where field=#{field} and author=#{author} and entity1=#{entity1} and entity2=#{entity2} and relation=#{relation}
     </delete>
+    <delete id="deleteByUserField" parameterType="String">
+        delete from relation where author=#{author} and field=#{field}
+    </delete>
+    <select id="findByField" parameterType="String" resultType="com.jia.common.entity.relation">
+        select * from relation where field=#{param1}
+    </select>
 </mapper>

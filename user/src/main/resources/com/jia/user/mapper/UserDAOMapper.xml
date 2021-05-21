@@ -1,12 +1,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jia.user.dao.UserDAO">
     <insert id="save" parameterType="com.jia.common.entity.User">
-        insert into user values(#{name},#{account},#{password},#{phoneNumber},#{payAccount},#{authorities},#{numArticles},#{numTag},#{numUsefulTag})
+        insert into user values(#{name},#{account},#{password},#{phoneNumber},#{payAccount},#{authorities},#{numArticles},#{numTag},#{numUsefulTag},#{numSentences})
     </insert>
     <select id="findOne" parameterType="String" resultType="com.jia.common.entity.User">
         select * from user where account=#{account}
     </select>
-    <update id="incUser" parameterType="String">
-        update user set num_tag=num_tag+1 where account=#{username}
+    <update id="incNum_tag" parameterType="String">
+        update user set numTag=numTag+1 where account=#{account}
+    </update>
+    <update id="incNum_articles" parameterType="String">
+        update user set numArticles=numArticles+1 where account=#{account}
+    </update>
+    <update id="incNum_sentences" parameterType="String">
+        update user set numSentences=numSentences+1 where account=#{account}
     </update>
 </mapper>

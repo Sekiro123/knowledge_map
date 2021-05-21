@@ -24,6 +24,7 @@ public class LogFilter implements Filter {
         System.out.println("logFilter doFilter function");
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpServletRequest req = (HttpServletRequest) request;
+        System.out.println("request.getAttribute(\"account\") = " + request.getAttribute("account"));
 //        resp.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500/");
 //        //允许跨域请求中携带cookie
 //        resp.setHeader("Access-Control-Allow-Credentials", "true");

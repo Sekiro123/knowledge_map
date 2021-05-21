@@ -3,6 +3,7 @@ package com.jia.tag.controller;
 import com.google.gson.Gson;
 import com.jia.tag.entity.tag;
 import com.jia.tag.service.ArticleService;
+import com.jia.tag.service.SentenceService;
 import com.jia.tag.service.tagServiceImpl;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,8 @@ public class tagController {
     private tagServiceImpl tagService;
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private SentenceService sentenceService;
     @RequestMapping("insert")
     @ResponseBody
     public String save(@RequestParam(value = "result") String tags, HttpServletResponse response) throws JSONException {
@@ -112,7 +115,18 @@ public class tagController {
     }
     @RequestMapping("findOneArticle")
     @ResponseBody
-    public String findOneArticle(String field){
-        return articleService.findOneArticle(field);
+    public String findOneArticle(String field,String account){
+        return articleService.findOneArticle(field,account);
+    }
+    @RequestMapping("findOneSentence")
+    @ResponseBody
+    public String findOneSentence(String field,String account){
+        return sentenceService.findOneSentence(field,account);
+    }
+    @RequestMapping("InsertSentencesFromArticle")
+    @ResponseBody
+    public String InsertSentencesFromArticle(@RequestParam("article") String article,@RequestParam("field") String field){
+        sentenceService.insertSentencesFromArticle(article,field);
+        return "success";
     }
 }
