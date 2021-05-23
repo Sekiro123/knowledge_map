@@ -49,4 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
     }
+    @Bean
+    MyAccessDeniedHandler getMyAccessDeniedHandler(){
+        return new MyAccessDeniedHandler();
+    } 
 }

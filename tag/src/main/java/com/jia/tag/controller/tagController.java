@@ -1,6 +1,7 @@
 package com.jia.tag.controller;
 
 import com.google.gson.Gson;
+import com.jia.tag.entity.TagTable;
 import com.jia.tag.entity.tag;
 import com.jia.tag.service.ArticleService;
 import com.jia.tag.service.SentenceService;
@@ -9,22 +10,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Controller
 //@RequestMapping("/tag")
+@CrossOrigin
 public class tagController {
 
     @Autowired
@@ -87,7 +87,7 @@ public class tagController {
                     if(models.get(j).predicate.equals(predicate)){
                         subject_properties=models.get(j).subject_type;
                         object_properties=models.get(j).object_type;
-                        com.jia.tag.entity.tag tag1 = new tag("ming", temp.getString("subject"), subject_properties,predicate, temp.getString("object"), object_properties," ",new Date());
+//                        com.jia.tag.entity.tag tag1 = new tag("ming", temp.getString("subject"), subject_properties,predicate, temp.getString("object"), object_properties," ",new Date());
 //                        tagService.save(tag1);
 //                        System.out.println(count++);
                         break;
@@ -105,6 +105,29 @@ public class tagController {
     public List<tag> findAll(){
         return tagService.findAll();
     }
+
+    @RequestMapping("backFindByPage")
+    @ResponseBody
+    public TagTable backFindByPage(@RequestParam("page")int page,@RequestParam("limit") int limit,@RequestParam(defaultValue = "null",value="searchParams",required = false) String searchParams) throws JSONException {
+
+
+        String account="";
+        String field="";
+        System.out.println("searchParams = " + searchParams);
+        if(!searchParams.equals("null")){
+            JSONObject jsonObject = new JSONObject(searchParams);
+            account=jsonObject.getString("account");
+            field=jsonObject.getString("field");
+            System.out.println(account+" "+field);
+        }
+        int code=0;
+        String msg="";
+        List<tag> all = tagService.findByPage(page,limit,account,field);
+        int count= tagService.count(account,field);
+        TagTable tagTable = new TagTable(code, msg, count, all);
+        return tagTable;
+    }
+
     @RequestMapping("updateNeo4j")
     @ResponseBody
     public String updateNeo4j(){
@@ -128,5 +151,39 @@ public class tagController {
     public String InsertSentencesFromArticle(@RequestParam("article") String article,@RequestParam("field") String field){
         sentenceService.insertSentencesFromArticle(article,field);
         return "success";
+    }
+
+    @RequestMapping("qualified")
+    @ResponseBody
+    public String qualified(@RequestParam("data") String tag){
+        Gson gson = new Gson();
+        com.jia.tag.entity.tag tag1 = gson.fromJson(tag, tag.class);
+        System.out.println("tag1.toString() = " + tag1.toString());
+        tagService.qualified(tag1);
+        return "success";
+    }
+    @RequestMapping("unqualified")
+    @ResponseBody
+    public String unqualified(@RequestParam("data") String tag){
+        Gson gson = new Gson();
+        com.jia.tag.entity.tag tag1 = gson.fromJson(tag, tag.class);
+        System.out.println("tag1.toString() = " + tag1.toString());
+        tagService.unqualified(tag1);
+        return "success";
+    }
+    @RequestMapping("tagCount")
+    @ResponseBody
+    public String tagCount(){
+        return String.valueOf(tagService.count("",""));
+    }
+    @RequestMapping("qualifiedTagCount")
+    @ResponseBody
+    public String qualifiedTagCount(){
+        return String.valueOf(tagService.quailifiedTagCount("",""));
+    }
+    @RequestMapping("unQualifiedTagCount")
+    @ResponseBody
+    public String unQualifiedTagCount(){
+        return String.valueOf(tagService.unQualifiedTagCount("",""));
     }
 }

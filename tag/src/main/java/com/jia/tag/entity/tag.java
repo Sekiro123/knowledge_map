@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -22,4 +21,5 @@ public class tag {
     private String object_properties;
     private String text;
     private Date time;
+    private String field;
 }

@@ -1,13 +1,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jia.tag.dao.TagDao">
+<mapper namespace="com.jia.tag.dao.QualifiedTagDao">
     <insert id="save" parameterType="com.jia.tag.entity.tag">
-        insert into tags values(#{account},#{subject},#{subject_properties},#{relation},#{object},#{object_properties},#{text},#{time},#{field})
+        insert into qualified_tags values(#{account},#{subject},#{subject_properties},#{relation},#{object},#{object_properties},#{text},#{time},#{field})
     </insert>
     <select id="findAll" resultType="com.jia.tag.entity.tag">
-        select * from tags
+        select * from qualified_tags
     </select>
     <select id="findByPage" resultType="com.jia.tag.entity.tag">
-        select * from tags
+        select * from qualified_tags
         <if test="account!='' or field!=''">where</if>
         <if test="account!=null and account!=''">account=#{account}</if>
         <if test="field!=null and field!=''">
@@ -17,7 +17,7 @@
         limit #{start},#{length}
     </select>
     <select id="count" resultType="java.lang.Integer">
-        select count(*) from tags
+        select count(*) from qualified_tags
         <if test="account!='' or field!=''">where</if>
         <if test="account!=null and account!=''">account=#{account}</if>
         <if test="field!=null and field!=''">
@@ -25,8 +25,4 @@
             field=#{field}
         </if>
     </select>
-    <delete id="delete" parameterType="com.jia.tag.entity.tag">
-        delete from tags where account=#{account} and field=#{field} and SUBJECT=#{subject} and subject_properties = #{subject_properties} and object=#{object} and object_properties=#{object_properties} and time=#{time}
-    </delete>
-
 </mapper>

@@ -19,7 +19,7 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
         httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
         httpServletResponse.setHeader("Content-Type","application/json;charset=utf-8");
         PrintWriter writer = httpServletResponse.getWriter();
-        writer.write("权限不足，请联系管理员");
+        writer.write(127);
         writer.flush();
         writer.close();
     }

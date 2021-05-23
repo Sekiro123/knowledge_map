@@ -1,7 +1,9 @@
 package com.jia.tag.service;
 
+import com.jia.tag.dao.QualifiedTagDao;
 import com.jia.tag.dao.RedisUtil;
 import com.jia.tag.dao.TagDao;
+import com.jia.tag.dao.UnQualifiedTagDao;
 import com.jia.tag.entity.tag;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Driver;
@@ -11,7 +13,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,6 +23,10 @@ public class tagServiceImpl implements tagService{
     @Autowired
     private RedisUtil redisUtil;
 
+    @Autowired
+    private QualifiedTagDao qualifiedTagDao;
+    @Autowired
+    private UnQualifiedTagDao unQualifiedTagDao;
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
@@ -42,6 +47,18 @@ public class tagServiceImpl implements tagService{
 
 
     }
+
+    @Override
+    public int count(String account,String field){
+        return tagDao.count(account,field);
+    }
+
+    @Override
+    public List<tag> findByPage(int page, int limit,String account,String field) {
+
+        return tagDao.findByPage((page-1)*limit,limit,account,field);
+    }
+
     public String updateNeo4j(){
         List<tag> all = tagDao.findAll();
         Driver driver = GraphDatabase.driver("bolt://192.168.31.65:7687", AuthTokens.basic("neo4j", "123456"));
@@ -73,4 +90,28 @@ public class tagServiceImpl implements tagService{
 //
 //    }
 
+
+    @Override
+    public int qualified(tag tag) {
+        tagDao.delete(tag);
+        qualifiedTagDao.save(tag);
+        return 0;
+    }
+
+    @Override
+    public int unqualified(tag tag) {
+        tagDao.delete(tag);
+        unQualifiedTagDao.save(tag);
+        return 0;
+    }
+
+    @Override
+    public int quailifiedTagCount(String account, String field) {
+        return qualifiedTagDao.count(account,field);
+    }
+
+    @Override
+    public int unQualifiedTagCount(String account, String field) {
+        return unQualifiedTagDao.count(account,field);
+    }
 }

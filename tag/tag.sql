@@ -16,7 +16,7 @@ CREATE TABLE `tags` (
   `time` datetime DEFAULT NULL,
   INDEX(`account` )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+alter table tags add column field varchar(255) default 'daily';
 
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
@@ -47,3 +47,31 @@ CREATE TABLE `sentences` (
                             `TagTimes` Integer(20) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 SET FOREIGN_KEY_CHECKS = 1;
+
+DROP TABLE IF EXISTS `qualified_tags`;
+CREATE TABLE `qualified_tags` (
+                        `account` varchar(40) DEFAULT NULL,
+                        `SUBJECT` varchar(40) DEFAULT NULL,
+                        `subject_properties` varchar(40) DEFAULT NULL,
+                        `relation` varchar(40) DEFAULT NULL,
+                        `object` varchar(40) DEFAULT NULL,
+                        `object_properties` varchar(40) DEFAULT NULL,
+                        `text` varchar(255) DEFAULT NULL,
+                        `time` datetime DEFAULT NULL,
+                        INDEX(`account` )
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+alter table qualified_tags add column field varchar(255) default 'daily';
+
+DROP TABLE IF EXISTS `unqualified_tags`;
+CREATE TABLE `unqualified_tags` (
+                                  `account` varchar(40) DEFAULT NULL,
+                                  `SUBJECT` varchar(40) DEFAULT NULL,
+                                  `subject_properties` varchar(40) DEFAULT NULL,
+                                  `relation` varchar(40) DEFAULT NULL,
+                                  `object` varchar(40) DEFAULT NULL,
+                                  `object_properties` varchar(40) DEFAULT NULL,
+                                  `text` varchar(255) DEFAULT NULL,
+                                  `time` datetime DEFAULT NULL,
+                                  INDEX(`account` )
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+alter table unqualified_tags add column field varchar(255) default 'daily';
